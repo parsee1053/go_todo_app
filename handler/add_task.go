@@ -38,7 +38,7 @@ func (at *AddTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		Status:  entity.TaskStatusTodo,
 		Created: time.Now(),
 	}
-	id, err := at.Store.Add(t)
+	id, err := store.Tasks.Add(t)
 	if err != nil {
 		RespondJSON(ctx, w, &ErrResponse{
 			Message: err.Error(),

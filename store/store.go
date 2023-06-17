@@ -1,6 +1,16 @@
 package store
 
-import "github.com/parsee1053/go_todo_app/entity"
+import (
+	"errors"
+
+	"github.com/parsee1053/go_todo_app/entity"
+)
+
+var (
+	Tasks = &TaskStore{Tasks: map[entity.TaskID]*entity.Task{}}
+
+	ErrNotFound = errors.New("not found")
+)
 
 type TaskStore struct {
 	// 動作確認用の仮実装なのであえてexportしている。
